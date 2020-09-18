@@ -12,34 +12,33 @@ class Counter extends React.Component {
     this.handleIncrementValue = this.handleIncrementValue.bind(this);
     this.handleChangeInput = this.handleChangeInput.bind(this);
     this.handleDecrementValue = this.handleDecrementValue.bind(this);
+
+    props.changeValue(props.defaultValue);
+  }
+
+  changeValue(value) {
+    if (value >= this.props.minValue && value <= this.props.maxValue) {
+      this.setState({
+        value: value.toString(),
+      })
+  
+      this.props.changeValue(value);
+    }
   }
 
   handleIncrementValue() {
     const value = +this.state.value + 1;
-
-    this.setState({
-      value: value.toString(),
-    })
-
-    this.props.changeValue(value);
+    this.changeValue(value);
   }
 
   handleDecrementValue() {
     const value = +this.state.value - 1;
-
-    this.setState({
-      value: value.toString(),
-    })
-
-    this.props.changeValue(value);
+    this.changeValue(value);
   }
 
   handleChangeInput(event) {
-    this.setState({
-      value: event.target.value,
-    });
-
-    this.props.changeValue(+event.target.value);
+    const value = event.target.value;
+    this.changeValue(value);
   }
 
   render() {
@@ -52,22 +51,23 @@ class Counter extends React.Component {
                 <Col md={4}>
                   <FormGroup>
                     <Button
-                      style={{ marginRight: '10px' }}
+                      style={{ marginRight: '10px'}}
                       onClick={this.handleDecrementValue}
+                      disabled={+this.state.value === this.props.minValue}
                     >
                       -
                     </Button>
                     <Input
-                      style={{ marginRight: '10px' }}
+                      style={{ marginRight: '10px'}}
                       type="number"
                       name="counter"
                       id="exampleCity"
                       value={this.state.value}
                       onChange={this.handleChangeInput}
-                      onWheel={() => {}}
                     />
                     <Button
                      onClick={this.handleIncrementValue}
+                     disabled={+this.state.value === this.props.maxValue}
                     >
                       +
                     </Button>

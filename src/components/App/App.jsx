@@ -1,6 +1,10 @@
 import React from 'react';
 import Counter from '../Counter/Counter.jsx';
 
+const DEFAULT_VALUE = 3;
+const MIN_VALUE = 0;
+const MAX_VALUE = 4
+
 
 class App extends React.Component {
   constructor(props) {
@@ -14,7 +18,6 @@ class App extends React.Component {
   }
 
   handleChangeValueCounter(value) {
-    console.log(value);
     this.setState({
       valueCounter: value,
     });
@@ -24,13 +27,12 @@ class App extends React.Component {
     return (
       <div className="App">
         <Counter
-          defaultValue={0}
-          // minValue={}
-          // maxValue={}
+          defaultValue={DEFAULT_VALUE}
+          minValue={MIN_VALUE}
+          maxValue={MAX_VALUE}
           changeValue={this.handleChangeValueCounter}
         />
-
-        <p>Значиение коунтера: <b>{this.state.valueCounter}</b></p>
+        <p>Значиение cчетчика: <b>{this.state.valueCounter}</b></p>
       </div>
     );
   }
