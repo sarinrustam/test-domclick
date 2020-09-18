@@ -49,7 +49,7 @@ class Counter extends React.Component {
             <Form inline>
               <Row form>
                 <Col md={4}>
-                  <FormGroup>
+                  <FormGroup style={{flexFlow: "row"}}>
                     <Button
                       style={{ marginRight: '10px'}}
                       onClick={this.handleDecrementValue}
