@@ -1,9 +1,9 @@
 import React from 'react';
 import Counter from '../Counter/Counter.jsx';
 
-const DEFAULT_VALUE = 3;
+const DEFAULT_VALUE = 0;
 const MIN_VALUE = 0;
-const MAX_VALUE = 4
+const MAX_VALUE = 100;
 
 
 class App extends React.Component {
